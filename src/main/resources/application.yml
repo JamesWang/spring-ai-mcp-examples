@@ -1,0 +1,19 @@
+spring:
+  devtools:
+    restart:
+      enabled: false
+  ai:
+    openai:
+      # Redirect traffic away from ://openai.com to your local instance
+      base-url: ${AI_BASE_URL:http://localhost:1234/v1}
+      # LM Studio ignores the API key, but Spring AI requires a non-empty string placeholder
+      api-key: ${API_KEY:lm-studio}
+      chat:
+        model: ${MODEL_NAME:qwen/qwen3-4b-thinking-2507}
+        temperature: ${TEMP_VALUE:0.7}
+ai:
+  mcp:
+    tool:
+      py:
+        path: ${MCP_PY_TOOL_PATH}
+        venv: ${MCP_PY_VENV_PATH}
